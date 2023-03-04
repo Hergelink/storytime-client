@@ -1,0 +1,66 @@
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#loginTitle, #registerTitle {
+    margin-bottom: 1rem;
+}
+
+#loginForm, #registerForm {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    width: 350px;
+    gap: 20px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 4px;
+}
+
+.loginInput, .registerInput {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    border-bottom: 1px solid white;
+}
+
+#loginButton, #registerButton {
+    padding: 10px;
+    border: none;
+    background-color: rgb(128, 28, 222);
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+#loginButton:hover, #registerButton:hover {
+    background-color: rgb(144, 47, 235);
+}
+
+
+#errorP {
+    font-size: 12px;
+    color: red;
+    text-align: center;
+}
+
+#loginSpan, #registerSpan {
+  font-size: 12px;
+  text-align: center;  
+}
+
+
+
+#loginA, #registerA {
+    text-decoration: none;
+    color: rgb(193, 133, 248);
+}
+
+#loginA:hover, #registerA:hover {
+    text-decoration: underline dashed;
+    color: rgb(204, 161, 245);
+}

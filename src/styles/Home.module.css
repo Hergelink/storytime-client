@@ -1,0 +1,109 @@
+#heroContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#heroImg {
+  width: 100%;
+  border-radius: 8px;
+}
+
+#infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#tagline {
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 99%;
+}
+
+#tagline span {
+  background-image: linear-gradient(90deg, white, rgb(128, 28, 222));
+  background-clip: text;
+  color: transparent;
+}
+
+.infoContent {
+  padding: 1rem 0px;
+  font-size: 1.1rem;
+  color: rgb(178, 177, 177);
+  text-align: center;
+}
+
+.createStoryBtn,
+.createStoryBtnBottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0px;
+  width: 100%;
+  color: white;
+  background-color: rgb(128, 28, 222);
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#createStoryBtn:hover {
+  background-color: rgb(144, 47, 235);
+}
+
+.linebreak {
+  height: 2px;
+  border: none;
+  background-color: rgba(156, 72, 234, 0.39);
+}
+
+#callToActionDiv {
+  margin: 5rem 0;
+}
+
+#callToAction {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+#callToAction span {
+  text-decoration: underline rgba(209, 163, 252, 0.807) wavy;
+}
+
+@media only screen and (min-width: 54em) {
+  #heroContainer {
+    flex-direction: row;
+  }
+
+  #imageContainer {
+    width: 45%;
+  }
+
+  #heroImg {
+    width: 100%;
+  }
+
+  #infoContainer {
+    width: 55%;
+  }
+
+  #tagline {
+    text-align: left;
+  }
+
+  .infoContent {
+    font-size: 1.2rem;
+    text-align: left;
+  }
+
+  .createStoryBtnBottom {
+    width: 600px;
+    margin-inline: auto;
+  }
+
+  #callToActionDiv {
+    margin: 8rem 0;
+  }
+}
