@@ -24,6 +24,9 @@ export default function Footer() {
             <Link to='/' className={style.footerLinks} onClick={handleScroll}>
               Home
             </Link>
+            <Link to='/stories' className={style.footerLinks} onClick={handleScroll}>
+              Stories
+            </Link>
             <Link to='/create' className={style.footerLinks} onClick={handleScroll}>
               Create
             </Link>

@@ -14,14 +14,14 @@ export default function StoryCard({
   };
 
   const editedTitle = title.replace(/"/g, '');
-  const formattedImageUrl = image.replace('./server', '');
-
+  const formattedImageUrl = image.replace('./server', '/');
+  const finalUrl = '/' + formattedImageUrl;
   return (
     <div className={style.storyContainer}>
       <div className={style.imageContainer}>
         <img
-          src={`${process.env.REACT_APP_API_END_POINT}${formattedImageUrl}`}
-          // src={`http://localhost:3001${formattedImageUrl}`}
+          //
+          src={`${process.env.REACT_APP_API_END_POINT}${finalUrl}`}
           alt={`a description of ${title}`}
         />
       </div>

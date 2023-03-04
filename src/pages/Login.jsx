@@ -11,10 +11,11 @@ export default function Login() {
   const [alert, setAlert] = useState(false);
   const { setUserInfo } = useContext(UserContext);
 
+  
   async function login(e) {
     e.preventDefault();
 
-    // `${process.env.REACT_APP_API_END_POINT}/openai/generatetext`,
+
     const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/login`, {
     // const response = await fetch('http://localhost:3001/login', {
       method: 'POST',
