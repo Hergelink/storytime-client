@@ -7,7 +7,7 @@ import MobileModal from './MobileModal';
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [menuState, setMenuState] = useState(false);
-
+  console.log(userInfo)
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_END_POINT}/profile`, {
       // fetch('http://localhost:3001/profile', {
