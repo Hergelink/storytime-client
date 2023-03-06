@@ -10,7 +10,6 @@ export default function Header() {
   
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_END_POINT}/profile`, {
-      // fetch('http://localhost:3001/profile', {
       credentials: 'include',
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -20,7 +19,7 @@ export default function Header() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('http://localhost:3001/logout', {
+    fetch(`${process.env.REACT_APP_API_END_POINT}/logout`, {
       credentials: 'include',
       method: 'POST',
     });
