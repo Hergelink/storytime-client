@@ -11,24 +11,24 @@ export default function Login() {
   const [alert, setAlert] = useState(false);
   const { setUserInfo } = useContext(UserContext);
 
-  
   async function login(e) {
     e.preventDefault();
 
-
-    const response = await fetch(`${process.env.REACT_APP_API_END_POINT}/login`, {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_END_POINT}/login`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+      }
+    );
     if (response.ok) {
       response.json().then((userInfo) => {
         setUserInfo(userInfo);
         setRedirect(true);
       });
     } else {
-      // alert('wrong credentials');
       setAlert(true);
     }
   }
@@ -36,7 +36,6 @@ export default function Login() {
   if (redirect) {
     return <Navigate to='/' />;
   }
-
 
   return (
     <div className={style.auth}>
@@ -48,7 +47,7 @@ export default function Login() {
           type='email'
           placeholder='Email'
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className={style.loginInput}
@@ -56,10 +55,9 @@ export default function Login() {
           type='password'
           placeholder='Password'
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <button id={style.loginButton}>Login</button>
-        {/* <p id={style.errorP}>This is an error!</p> */}
         <p id={style.errorP}>{alert ? 'Incorrect email or password' : null}</p>
         <span id={style.loginSpan}>
           Don't you have an account?

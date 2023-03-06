@@ -7,7 +7,6 @@ export default function Stories() {
   const [stories, setStories] = useState([]);
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_END_POINT}/post`).then((response) => {
-    // fetch('http://localhost:3001/post').then((response) => {
       response.json().then((stories) => {
         setStories(stories);
       });
