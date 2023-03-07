@@ -117,16 +117,20 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 5px 5px;
   color: white;
-
-  border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
+
+  background-image: linear-gradient(90deg, white, rgb(128, 28, 222));
+  background-size: 0% 3px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 300ms ease;
 }
 
 .desktopLinks:hover {
-  background-color: rgba(118, 6, 223, 0.811);
+  background-size: 100% 3px;
 }
 
 #loginBtn {
