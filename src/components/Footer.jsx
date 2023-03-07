@@ -16,7 +16,7 @@ export default function Footer() {
           <Link to='/' id={style.footerLogo} translate='no' onClick={handleScroll}>
             StoryTime&trade;
           </Link>
-          <p>Create your unique stories in seconds.</p>
+          <p>Create unique stories in seconds.</p>
         </div>
         <div className={style.footerContainers}>
           <h3 className={style.footerTitles}>Links</h3>
