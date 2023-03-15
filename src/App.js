@@ -9,6 +9,7 @@ import SingleStory from './pages/SingleStory';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Stories from './components/Stories';
+import Subscription from './pages/Subscription';
 
 const Layout = () => {
   return (
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/subscription',
+    element: <Subscription />,
   },
 ]);
 
