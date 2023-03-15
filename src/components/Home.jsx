@@ -3,6 +3,7 @@ import style from '../styles/Home.module.css';
 import heroImage from '../images/hero-image.webp';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
+import Subscription from '../pages/Subscription';
 export default function Home() {
   const handleScroll = () => {
     const element = document.querySelector('header');
@@ -47,17 +48,7 @@ export default function Home() {
       <hr className={style.linebreak} />
       <ExampleStories handleScroll={handleScroll} />
       <section id={style.callToActionDiv}>
-        <h3 id={style.callToAction}>
-          Don't just read,
-          <br /> <span>create your own!</span>
-        </h3>
-        <Link
-          to='/create'
-          className={style.createStoryBtnBottom}
-          onClick={handleScroll}
-        >
-          + Create Your Story
-        </Link>
+        <Subscription />
       </section>
     </main>
   );

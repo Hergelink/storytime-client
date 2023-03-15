@@ -1,11 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import style from '../styles/LoginRegister.module.css';
 
 export default function Subscription() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
   const [alert, setAlert] = useState(false);
 
@@ -13,59 +10,61 @@ export default function Subscription() {
 
   async function handlePayment(e) {
     e.preventDefault();
-    if (email.length > 0) {
-      Paddle.Checkout.open({
-        product: 47216,
-        email: email,
-        successCallback: (data, err) => {
-          console.log(data);
-          //ADD YOUR EXTRA LOGIC TO SEND TO BACKEND
-          fetch(`${process.env.REACT_APP_API_END_POINT}/payment`, {
-            method: "POST",
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(email),
-          });
-        },
-      });
-    } else {
-      alert('Please enter an Email Address');
-    }
+
+    Paddle.Checkout.open({
+      product: 47216,
+
+      successCallback: (data, err) => {
+        console.log(data);
+        //ADD YOUR EXTRA LOGIC TO SEND TO BACKEND
+        fetch(`${process.env.REACT_APP_API_END_POINT}/payment`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+      },
+    });
   }
 
   if (redirect) {
-    return <Navigate to='/' />;
+    return <Navigate to='/create' />;
   }
 
   return (
-    <div className={style.auth}>
-      <h1 id={style.loginTitle}>Subscription</h1>
+    <div className={style.auth} id={style.subscribe}>
+      <h3 id={style.callToAction}>
+          Don't just read,
+          <br /> <span>create your own!</span>
+        </h3>
+      
+      <h1 id={style.loginTitle}>14-Day Free Trial</h1>
+
       <form id={style.loginForm} onSubmit={handlePayment}>
-        <input
-          className={style.loginInput}
-          required
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+        <h3 style={{ fontSize: '1.3rem', textAlign: 'center' }}>
+          Subscription
+        </h3>
+        <hr
+          style={{
+            width: '20%',
+            height: '4px',
+            backgroundColor: 'white',
+            margin: '0 auto',
+          }}
         />
-        <input
-          className={style.loginInput}
-          required
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button id={style.loginButton}>Login</button>
+        <h3 style={{ textAlign: 'center', fontSize: '2rem' }}>
+          $3.99 <span style={{ color: 'grey', fontSize: '1rem' }}>/month</span>
+        </h3>
+        <ul style={{ margin: '0 auto', listStyle: 'none' }}>
+          <li>✓ Unlimited Stories</li>
+          <li>✓ Download PDF's</li>
+          <li>✓ Publish to Stories</li>
+          <li>✓ Cancel Anytime</li>
+        </ul>
+
+        <button id={style.loginButton}>Subscribe</button>
         <p id={style.errorP}>{alert ? 'Incorrect email or password' : null}</p>
-        <span id={style.loginSpan}>
-          Don't you have an account?
-          <Link to='/register' id={style.loginA}>
-            Register
-          </Link>
-        </span>
       </form>
     </div>
   );

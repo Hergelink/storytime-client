@@ -64,3 +64,13 @@
     text-decoration: underline dashed;
     color: rgb(204, 161, 245);
 }
+
+#callToAction {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 4rem;
+  }
+
+  #callToAction span {
+    text-decoration: underline rgba(209, 163, 252, 0.807) wavy;
+  }
