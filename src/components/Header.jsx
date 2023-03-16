@@ -7,7 +7,7 @@ import MobileModal from './MobileModal';
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [menuState, setMenuState] = useState(false);
-  
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_END_POINT}/profile`, {
       credentials: 'include',
@@ -22,9 +22,14 @@ export default function Header() {
     fetch(`${process.env.REACT_APP_API_END_POINT}/logout`, {
       credentials: 'include',
       method: 'POST',
+    }).then((response) => {
+      if (response.status === 200) {
+        setUserInfo(null);
+        window.location.reload();
+      }
     });
-    setUserInfo(null);
   }
+
 
   const userEmail = userInfo?.email;
 

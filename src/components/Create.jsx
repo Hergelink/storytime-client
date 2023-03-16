@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../components/UserContext';
+
 import style from '../styles/Create.module.css';
 import OutputArea from './OutputArea';
 import Spinner from './Spinner';
@@ -14,6 +17,26 @@ export default function Create() {
   const [storyBody, setStoryBody] = useState('Story');
   const [image, setImage] = useState('');
   const [storyEnd, setStoryEnd] = useState('');
+  const [redirect, setRedirect] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { setUserInfo, userInfo } = useContext(UserContext);
+
+  useEffect(() => {
+    checkAuthenticationStatus();
+  }, [setUserInfo]);
+
+  function checkAuthenticationStatus() {
+    fetch(`${process.env.REACT_APP_API_END_POINT}/auth-endpoint`, {
+      credentials: 'include',
+    }).then((response) => {
+      if (response.status === 401) {
+        setRedirect(true);
+      }
+      response.json().then(() => {
+        console.log('Authenticated');
+      });
+    });
+  }
 
   const handleInput = (e) => {
     setInput(() => e.target.value);
@@ -32,9 +55,6 @@ export default function Create() {
     setStoryEnd('');
     setLoading(true);
     try {
-      // const response = await fetch(
-      //   'http://localhost:3001/openai/generatetext',
-      //   {
       const response = await fetch(
         `${process.env.REACT_APP_API_END_POINT}/openai/generatetext`,
         {
@@ -72,6 +92,11 @@ export default function Create() {
 
     generateText(input);
   };
+
+  if (redirect) {
+    return <Navigate to='/login' />;
+  }
+
 
   return (
     <main>
