@@ -3,7 +3,7 @@ import style from '../styles/Home.module.css';
 import heroImage from '../images/hero-image.webp';
 import HowtoUse from './HowtoUse';
 import ExampleStories from './ExampleStories';
-import Subscription from '../pages/Subscription';
+import Subscription from './Subscription';
 export default function Home() {
   const handleScroll = () => {
     const element = document.querySelector('header');

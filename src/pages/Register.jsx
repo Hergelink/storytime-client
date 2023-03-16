@@ -29,7 +29,7 @@ export default function Register() {
       setRedirect(true);
     } else {
       setSpinner(false);
-      setAlert('Problem connecting to server')
+      setAlert('Problem connecting to server');
     }
     setSpinner(false);
   };
@@ -76,6 +76,9 @@ export default function Register() {
             Login
           </Link>
         </span>
+        <Link to='/' id={style.homeLink}>
+          <span>Back to Homepage</span>
+        </Link>
       </form>
     </div>
   );

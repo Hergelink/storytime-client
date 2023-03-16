@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import style from '../styles/LoginRegister.module.css';
+import style from '../styles/Subscription.module.css'
 
 export default function Subscription() {
   const [redirect, setRedirect] = useState(false);
   const [alert, setAlert] = useState(false);
 
   const Paddle = window.Paddle;
+
+  // Paddle.Setup({
+  //   vendor: process.env.VENDOR_ID,
+  // });
+  
 
   async function handlePayment(e) {
     e.preventDefault();
@@ -33,15 +38,15 @@ export default function Subscription() {
   }
 
   return (
-    <div className={style.auth} id={style.subscribe}>
+    <div className={style.Container} id={style.subscribe}>
       <h3 id={style.callToAction}>
           Don't just read,
           <br /> <span>create your own!</span>
         </h3>
       
-      <h1 id={style.loginTitle}>14-Day Free Trial</h1>
+      <h1 id={style.title}>14-Day Free Trial</h1>
 
-      <form id={style.loginForm} onSubmit={handlePayment}>
+      <form id={style.subscribeForm} onSubmit={handlePayment}>
         <h3 style={{ fontSize: '1.3rem', textAlign: 'center' }}>
           Subscription
         </h3>
@@ -63,8 +68,8 @@ export default function Subscription() {
           <li>✓ Cancel Anytime</li>
         </ul>
 
-        <button id={style.loginButton}>Subscribe</button>
-        <p id={style.errorP}>{alert ? 'Incorrect email or password' : null}</p>
+        <button id={style.subscribeButton}>Subscribe</button>
+        <p id={style.errorP}>{alert ? 'Connection Failed' : null}</p>
       </form>
     </div>
   );

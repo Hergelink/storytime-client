@@ -9,7 +9,8 @@ import SingleStory from './pages/SingleStory';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Stories from './components/Stories';
-import Subscription from './pages/Subscription';
+import Subscription from './components/Subscription';
+import SubscriptionPage from './pages/SubscriptionPage';
 
 const Layout = () => {
   return (
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/subscription',
-    element: <Subscription />,
+    element: <SubscriptionPage />,
   },
 ]);
 

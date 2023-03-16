@@ -13,7 +13,12 @@ export default function Footer() {
     <footer>
       <div id={style.wrapper}>
         <div className={style.footerContainers}>
-          <Link to='/' id={style.footerLogo} translate='no' onClick={handleScroll}>
+          <Link
+            to='/'
+            id={style.footerLogo}
+            translate='no'
+            onClick={handleScroll}
+          >
             StoryTime&trade;
           </Link>
           <p>Create unique stories in seconds.</p>
@@ -24,14 +29,40 @@ export default function Footer() {
             <Link to='/' className={style.footerLinks} onClick={handleScroll}>
               Home
             </Link>
-            <Link to='/stories' className={style.footerLinks} onClick={handleScroll}>
+            <Link
+              to='/stories'
+              className={style.footerLinks}
+              onClick={handleScroll}
+            >
               Stories
             </Link>
-            <Link to='/create' className={style.footerLinks} onClick={handleScroll}>
+            <Link
+              to='/create'
+              className={style.footerLinks}
+              onClick={handleScroll}
+            >
               Create
             </Link>
-            <Link to='/login' className={style.footerLinks} onClick={handleScroll}>
+            <Link
+              to='/login'
+              className={style.footerLinks}
+              onClick={handleScroll}
+            >
               Login
+            </Link>
+            <Link
+              to='/register'
+              className={style.footerLinks}
+              onClick={handleScroll}
+            >
+              Register
+            </Link>
+            <Link
+              to='/subscription'
+              className={style.footerLinks}
+              onClick={handleScroll}
+            >
+              Subscribe
             </Link>
           </div>
         </div>
