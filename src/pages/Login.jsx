@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../components/UserContext';
 import style from '../styles/LoginRegister.module.css';
+import Spinner from '../components/Spinner';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -10,9 +11,11 @@ export default function Login() {
   const [redirect, setRedirect] = useState(false);
   const [alert, setAlert] = useState(false);
   const { setUserInfo } = useContext(UserContext);
+  const [spinner, setSpinner] = useState(false);
 
   async function login(e) {
     e.preventDefault();
+    setSpinner(true);
 
     const response = await fetch(
       `${process.env.REACT_APP_API_END_POINT}/login`,
@@ -29,8 +32,10 @@ export default function Login() {
         setRedirect(true);
       });
     } else {
+      setSpinner(false);
       setAlert(true);
     }
+    setSpinner(false);
   }
 
   if (redirect) {
@@ -38,34 +43,45 @@ export default function Login() {
   }
 
   return (
-    <div className={style.auth}>
-      <h1 id={style.loginTitle}>Login</h1>
-      <form id={style.loginForm} onSubmit={login}>
-        <input
-          className={style.loginInput}
-          required
-          type='email'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className={style.loginInput}
-          required
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button id={style.loginButton}>Login</button>
-        <p id={style.errorP}>{alert ? 'Incorrect email or password' : null}</p>
-        <span id={style.loginSpan}>
-          Don't you have an account?
-          <Link to='/register' id={style.loginA}>
-            Register
-          </Link>
-        </span>
-      </form>
-    </div>
+    <>
+      {spinner ? (
+        <Spinner />
+      ) : (
+        <div className={style.auth}>
+          <h1 id={style.loginTitle}>Login</h1>
+          <form id={style.loginForm} onSubmit={login}>
+            <input
+              className={style.loginInput}
+              required
+              type='email'
+              placeholder='Email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className={style.loginInput}
+              required
+              type='password'
+              placeholder='Password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button id={style.loginButton}>Login</button>
+            <p id={style.errorP}>
+              {alert ? 'Incorrect email or password' : null}
+            </p>
+            <span id={style.loginSpan}>
+              Don't you have an account?
+              <Link to='/register' id={style.loginA}>
+                Register
+              </Link>
+            </span>
+            <Link to='/' id={style.homeLink}>
+              &#x2190; <span>Back to Homepage</span>
+            </Link>
+          </form>
+        </div>
+      )}
+    </>
   );
 }

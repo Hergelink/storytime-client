@@ -1,76 +1,110 @@
 .auth {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-#loginTitle, #registerTitle {
-    margin-bottom: 1rem;
+#loginTitle,
+#registerTitle {
+  margin-bottom: 1rem;
 }
 
-#loginForm, #registerForm {
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
-    width: 350px;
-    gap: 20px;
-    background-color: rgb(46, 46, 46);
-    border-radius: 4px;
+#loginForm,
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+  width: 350px;
+  gap: 20px;
+  background-color: rgb(46, 46, 46);
+  border-radius: 4px;
 }
 
-.loginInput, .registerInput {
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-    color: white;
-    border-bottom: 1px solid white;
+.loginInput,
+.registerInput {
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  border-bottom: 1px solid white;
 }
 
-#loginButton, #registerButton {
-    padding: 10px;
-    border: none;
-    background-color: rgb(128, 28, 222);
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
+#loginButton,
+#registerButton {
+  padding: 10px;
+  border: none;
+  background-color: rgb(128, 28, 222);
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-#loginButton:hover, #registerButton:hover {
-    background-color: rgb(144, 47, 235);
+#loginButton:hover,
+#registerButton:hover {
+  background-color: rgb(144, 47, 235);
 }
-
 
 #errorP {
-    font-size: 12px;
-    color: red;
-    text-align: center;
-}
-
-#loginSpan, #registerSpan {
   font-size: 12px;
-  text-align: center;  
+  color: red;
+  text-align: center;
 }
 
-
-
-#loginA, #registerA {
-    text-decoration: none;
-    color: rgb(193, 133, 248);
+#loginSpan,
+#registerSpan {
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
 }
 
-#loginA:hover, #registerA:hover {
-    text-decoration: underline dashed;
-    color: rgb(204, 161, 245);
+#loginA,
+#registerA {
+  text-decoration: none;
+  font-weight: 700;
+  color: rgb(193, 133, 248);
+}
+
+#loginA:hover,
+#registerA:hover {
+  text-decoration: underline dashed;
+  color: rgb(204, 161, 245);
 }
 
 #callToAction {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 4rem;
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 4rem;
+}
+
+#callToAction span {
+  text-decoration: underline rgba(209, 163, 252, 0.807) wavy;
+}
+
+#homeLink {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  margin-top: 1rem;
+ 
+  
+}
+
+#homeLink:hover {
+    background-size: 100% 3px;
+}
+
+#homeLink span {
+    
+    background-image: linear-gradient(90deg, white, rgb(128, 28, 222));
+    background-size: 0% 3px;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    transition: background-size 300ms ease;
   }
 
-  #callToAction span {
-    text-decoration: underline rgba(209, 163, 252, 0.807) wavy;
-  }
+  #homeLink:hover span{
+    background-size: 100% 2px;
+}

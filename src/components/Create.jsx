@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { UserContext } from '../components/UserContext';
 
 import style from '../styles/Create.module.css';
@@ -18,8 +18,8 @@ export default function Create() {
   const [image, setImage] = useState('');
   const [storyEnd, setStoryEnd] = useState('');
   const [redirect, setRedirect] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { setUserInfo, userInfo } = useContext(UserContext);
+  const location = useLocation();
 
   useEffect(() => {
     checkAuthenticationStatus();
@@ -97,6 +97,13 @@ export default function Create() {
     return <Navigate to='/login' />;
   }
 
+  // if (redirect) {
+  //   return <Navigate to={location.pathname === '/create' ? '/' : '/login'} />;
+  // }
+
+  // if (redirect) {
+  //   return <Navigate to={isLogout ? '/' : '/login'} />;
+  // }
 
   return (
     <main>
