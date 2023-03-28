@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { UserContext } from '../components/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import style from '../styles/Header.module.css';
 import MobileModal from './MobileModal';
 
@@ -11,31 +11,50 @@ export default function Header() {
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_END_POINT}/profile`, {
       credentials: 'include',
-    }).then((response) => {
-      response.json().then((userInfo) => {
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Not authenticated');
+        }
+      })
+      .then((userInfo) => {
         setUserInfo(userInfo);
+      })
+      .catch((error) => {
+        console.error(error);
+        setUserInfo(null);
       });
-    });
   }, [setUserInfo]);
+
+  const navigate = useNavigate();
 
   function logout() {
     fetch(`${process.env.REACT_APP_API_END_POINT}/logout`, {
-      credentials: 'include',
       method: 'POST',
+      credentials: 'include',
     }).then((response) => {
       if (response.status === 200) {
         setUserInfo(null);
-        window.location.reload();
+        navigate('/', { replace: true }); // Redirect to home page and replace the current entry in the history stack
       }
     });
   }
 
+  useEffect(() => {
+    if (userInfo === null) {
+      setUserInfo(null);
+    }
+  }, [userInfo, setUserInfo]);
 
   const userEmail = userInfo?.email;
 
   const toggleMobileMenu = () => {
     setMenuState(!menuState);
   };
+
+  console.log(userInfo);
 
   return (
     <header>
@@ -68,7 +87,7 @@ export default function Header() {
         <Link to='/create' className={style.desktopLinks}>
           + Create
         </Link>
-        {userEmail ? (
+        {userInfo ? (
           <button onClick={logout} id={style.logoutBtn}>
             Logout
           </button>

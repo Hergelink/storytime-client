@@ -30,6 +30,7 @@ export default function Create() {
       credentials: 'include',
     }).then((response) => {
       if (response.status === 401) {
+        setUserInfo(null);
         setRedirect(true);
       }
       response.json().then(() => {
@@ -96,14 +97,6 @@ export default function Create() {
   if (redirect) {
     return <Navigate to='/login' />;
   }
-
-  // if (redirect) {
-  //   return <Navigate to={location.pathname === '/create' ? '/' : '/login'} />;
-  // }
-
-  // if (redirect) {
-  //   return <Navigate to={isLogout ? '/' : '/login'} />;
-  // }
 
   return (
     <main>
