@@ -54,8 +54,6 @@ export default function Header() {
     setMenuState(!menuState);
   };
 
-  console.log(userInfo);
-
   return (
     <header>
       <Link to='/' id={style.siteLogo} translate='no'>
